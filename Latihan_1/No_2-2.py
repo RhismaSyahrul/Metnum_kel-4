@@ -13,9 +13,28 @@ def input_function():
         print("Fungsi tidak valid.")
         return None
 
+# Input batas akar
+def input_bounds():
+    a = float(input("Masukkan batas bawah interval: "))
+    b = float(input("Masukkan batas atas interval: "))
+    return a, b
+
+# Input galat
+def input_tolerance():
+    tol = float(input("Masukkan galat (toleransi): "))
+    return tol
+
+# Input jumlah iterasi (opsional)
+def input_iterations():
+    n_iter = input("Masukkan jumlah iterasi (biarkan kosong jika tidak ingin membatasi iterasi): ")
+    if n_iter:
+        n_iter = int(n_iter)
+    else:
+        n_iter = None
+    return n_iter
+
 # Melakukan metode bagi dua untuk mencari dan mendapatkan akar fungsi dalam interval [a, b]
 def metode_bagiDua(f, a, b, tol=1e-6, n_iter=None):
-
     # Pengecekan "apakah ada perpotongan akar dalam interval?"
     if f(a) * f(b) >= 0:
         print("Tidak ada akar di dalam interval ini.")
@@ -47,18 +66,13 @@ if fungsi is None:
     exit()
 
 # Input batas akar
-a = float(input("Masukkan batas bawah interval: "))
-b = float(input("Masukkan batas atas interval: "))
+a, b = input_bounds()
 
 # Input galat
-tol = float(input("Masukkan galat (toleransi): "))
+tol = input_tolerance()
 
 # Input jumlah iterasi (opsional)
-n_iter = input("Masukkan jumlah iterasi (biarkan kosong jika tidak ingin membatasi iterasi): ")
-if n_iter:
-    n_iter = int(n_iter)
-else:
-    n_iter = None
+n_iter = input_iterations()
 
 # Solusi untuk fungsi
 solusi = metode_bagiDua(fungsi, a, b, tol, n_iter)
