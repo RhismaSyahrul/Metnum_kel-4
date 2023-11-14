@@ -1,0 +1,27 @@
+def hitung_turunan_selisih_maju(data, h):
+    turunan = []
+    
+    for i in range(len(data) - 1):
+        x = data[i]
+        f_x = data[i + 1]
+        turunan_i = (f_x - x) / h
+        turunan.append(turunan_i)
+    
+    return turunan
+
+def main():
+    # Input data dari pengguna
+    data = input("Masukkan data (pisahkan dengan spasi): ")
+    data = list(map(float, data.split()))
+
+    # Input nilai h dari pengguna
+    h = float(input("Masukkan nilai h: "))
+
+    # Hitung turunan selisih maju
+    turunan = hitung_turunan_selisih_maju(data, h)
+
+    # Tampilkan hasil
+    print("Turunan Selisih Maju:", turunan)
+
+if __name__ == "__main__":
+    main()
