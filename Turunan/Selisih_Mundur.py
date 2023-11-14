@@ -1,18 +1,29 @@
-def turunan_selisih_mundur(data):
+def hitung_turunan_selisih_mundur(data, h):
     turunan = []
-    
+
     for i in range(1, len(data)):
-        turunan.append((data[i] - data[i-1]))
-    
+        f_x_h = data[i]
+        f_x = data[i - 1]
+        turunan_h = (f_x_h - f_x) / h
+        turunan.append(turunan_h)
+
     return turunan
 
-# Input data dari pengguna
-data_input = input("Masukkan data, pisahkan dengan spasi: ")
-data = [float(x) for x in data_input.split()]
+def main():
+    # Input data dari pengguna
+    data_input = input("Masukkan data yang dipisahkan oleh spasi: ")
+    data = [float(x) for x in data_input.split()]
 
-# Hitung turunan selisih mundur
-hasil_turunan = turunan_selisih_mundur(data)
+    # Input nilai h dari pengguna
+    h = float(input("Masukkan nilai h: "))
 
-# Tampilkan hasil
-print("Data input:", data)
-print("Turunan selisih mundur:", hasil_turunan)
+    # Hitung turunan selisih mundur
+    turunan_selisih_mundur = hitung_turunan_selisih_mundur(data, h)
+
+    # Tampilkan hasil
+    print("Hasil Turunan Selisih Mundur:")
+    for i in range(len(turunan_selisih_mundur)):
+        print(f"f'({data[i+1]}) = {turunan_selisih_mundur[i]}")
+
+if __name__ == "__main__":
+    main()
