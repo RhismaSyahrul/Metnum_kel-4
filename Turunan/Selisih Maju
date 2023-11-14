@@ -2,26 +2,28 @@ def hitung_turunan_selisih_maju(data, h):
     turunan = []
     
     for i in range(len(data) - 1):
-        x = data[i]
-        f_x = data[i + 1]
-        turunan_i = (f_x - x) / h
-        turunan.append(turunan_i)
+        f_x = data[i]
+        f_x_h = data[i + 1]
+        turunan_h = (f_x_h - f_x) / h
+        turunan.append(turunan_h)
     
     return turunan
 
 def main():
     # Input data dari pengguna
-    data = input("Masukkan data (pisahkan dengan spasi): ")
-    data = list(map(float, data.split()))
+    data_input = input("Masukkan data yang dipisahkan oleh spasi: ")
+    data = [float(x) for x in data_input.split()]
 
     # Input nilai h dari pengguna
     h = float(input("Masukkan nilai h: "))
 
     # Hitung turunan selisih maju
-    turunan = hitung_turunan_selisih_maju(data, h)
+    turunan_selisih_maju = hitung_turunan_selisih_maju(data, h)
 
     # Tampilkan hasil
-    print("Turunan Selisih Maju:", turunan)
+    print("Hasil Turunan Selisih Maju:")
+    for i in range(len(turunan_selisih_maju)):
+        print(f"f'({data[i]}) = {turunan_selisih_maju[i]}")
 
 if __name__ == "__main__":
     main()
